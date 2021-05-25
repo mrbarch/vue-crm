@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Редактировать</h4>
+        <h4>{{ 'Categories_Edit' | localize }}</h4>
       </div>
 
       <form @submit.prevent="submitHandler">
@@ -15,7 +15,7 @@
             >{{ c.title }}
             </option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{ 'Categories_ChooseCategory' | localize }}</label>
         </div>
 
         <div class="input-field">
@@ -25,12 +25,12 @@
             v-model="title"
             :class="{invalid: $v.title.$dirty && !$v.title.required}"
           >
-          <label for="name">Название</label>
+          <label for="name">{{ 'Categories_Name' | localize }}</label>
           <span
             v-if="$v.title.$dirty && !$v.title.required"
             class="helper-text invalid"
           >
-            Введите название категории
+            {{ 'Categories_WriteCategoryName' | localize }}
           </span>
         </div>
 
@@ -41,17 +41,17 @@
             v-model.number="limit"
             :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           >
-          <label for="limit">Лимит</label>
+          <label for="limit">{{ 'Categories_Limit' | localize }}</label>
           <span
             v-if="$v.limit.$dirty && !$v.limit.minValue"
             class="helper-text invalid"
           >
-            Минимальное значение {{ $v.limit.$params.minValue.min }}
+            {{ 'Categories_MinimumValue' | localize }} {{ $v.limit.$params.minValue.min }}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Обновить
+          {{ 'Categories_Update' | localize }}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -96,7 +96,7 @@ export default {
   methods: {
     async submitHandler() {
       if (this.$v.$invalid) {
-        this.$v.touch()
+        this.$v.$touch()
         return
       }
 

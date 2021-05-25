@@ -39,6 +39,7 @@
   </nav>
 </template>
 
+
 <script>
 export default {
   data: () => ({
@@ -65,7 +66,7 @@ export default {
       constrainWidth: false
     })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearInterval(this.interval)
     if (this.dropdown && this.dropdown.destroy) {
       this.dropdown.destroy()
